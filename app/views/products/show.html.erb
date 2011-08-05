@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product.price %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<div id="gallery">
+<% @product.photos.each do |p| %>
+	<p style="float:left; margin:2px; border:1px; border: 2px solid black;">
+		<%= link_to(image_tag(p.image.url(:thumb)), p.image.url(:original)) %>
+	</p>
+<% end %>
+</div>
+<br />
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+<script type="text/javascript">
+$(function() {
+	$('#gallery a').lightBox(); // Select all links in object with gallery ID
+});
+</script>
